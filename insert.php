@@ -11,6 +11,7 @@ $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
+$store = $_POST['store'];
 $birth_date = $_POST['year'] . '-'. $_POST['month'] . '-'. $_POST['day'];
 
 // print_r(date($birth_date));
@@ -22,8 +23,8 @@ $updated_at = $created_at;
 
 
 // Prepare SQL statement
-$stmt = $conn->prepare("INSERT INTO contact (firstname, lastname, phone, birth_date, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssss", $firstname, $lastname, $phone, $birth_date, $created_at, $updated_at);
+$stmt = $conn->prepare("INSERT INTO contact (firstname, lastname, phone, store, birth_date, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("sssssss", $firstname, $lastname, $phone, $store, $birth_date, $created_at, $updated_at);
 
 // // Execute the statement
 // if ($stmt->execute()) {

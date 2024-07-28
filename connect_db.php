@@ -26,6 +26,9 @@ class Database {
         $username = "atelierd_db";
         $password = "_gRI(VSoZ[C7";
         $dbname = "atelierd_db";
+        // $username = "root";
+        // $password = "";
+        // $dbname = "atelierde_db";
 
         $this->connection = new mysqli($servername, $username, $password, $dbname);
 
