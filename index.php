@@ -9,18 +9,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
     <title>Maison Margiela</title>
     <style>
+        @font-face {
+            font-family: 'Courier-MonoThai';
+            src: url('./fonts/CourierMonoThai.ttf') format('truetype');
+            font-style: normal;
+            font-weight: normal;
+        }
         body {
-            font-family: Courier, monospace;
+            font-family: 'Courier-MonoThai', monospace;
             text-align: center;
             background-color: #ffffff;
             color: #000000;
         }
         .noto-sans-thai {
-            font-family: "Noto Sans Thai", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 300;
-            font-style: normal;
-            font-variation-settings: "wdth" 100;
+            font-family: 'Courier-MonoThai', monospace;
         }
         .container {
             margin: 0 auto;
@@ -64,7 +66,7 @@
             width: 90%;
             padding: 10px;
             margin-bottom: 15px;
-            font-family: Courier, monospace;
+            font-family: 'Courier-MonoThai', monospace;
             font-size: 14px;
         }
         .form-container select {
@@ -113,11 +115,17 @@
         <div class="image-container">
             <img src="imgs/maison-margiela-thank-you-banner-02-1024x576.jpg" alt="Maison Margiela">
         </div>
-        <p class="text">
-            To redeem your 2 x Maison Margiela 1.2ml vials, simply present this page to our Brand Ambassadors at any Maison Margiela boutiques in Thailand by XX.
+        <p class="text" style="width: 70%; margin: 4px auto;">
+            To redeem your 3 x Maison Margiela 1.2ml vials, simply present this page to our Brand Ambassadors at any Maison Margiela boutiques in Thailand
+        </p>
+        <p class="text noto-sans-thai" style="width: 70%; margin: 8px auto 26px; font-size: 15px; font-weight: 200;">
+            รับฟรีน้ำหอม Maison Margiela ขนาดทดลอง 1.2 ml x 3 ชิ้น เพียงลงทะเบียนและแสดงหน้าเว็บไซต์นี้ที่บูทีค Maison Margiela
         </p>
         <p class="signup">
             Sign up below to redeem your complimentary samples
+        </p>
+        <p class="text noto-sans-thai" style="width: 70%; margin: -8px auto 16px; font-size: 16px; font-weight: 200;">
+            กรุณาลงทะเบียนเพื่อรับน้ำหอมขนาดทดลอง ฟรี
         </p>
         <div class="form-container">
             <div style="max-width:500px !important;">
@@ -141,9 +149,9 @@
                         <option value="EmQuartier">EmQuartier / <span class="noto-sans-thai">เอ็มควอเทียร์</span></option>
                     </select>
                     
-                    <label for="birthday">Date of Birth/ <span class="noto-sans-thai">วันเดือนปีเกิด</span>:</label>
+                    <label for="birthday">Date of Birth / วันเดือนปีเกิด:</label>
                     <select id="month" name="month" required>
-                        <option value="" disabled selected>Month / <span class="noto-sans-thai">เดือน</span></option>
+                        <option value="" disabled selected>Month / เดือน</option>
                         <!-- Add month options here -->
                         <option value="1">1</option>
                         <option value="2">2</option>
