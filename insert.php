@@ -22,8 +22,8 @@ $created_at = date('Y-m-d H:i:s');
 $updated_at = $created_at;
 
 // Prepare SQL statement
-$stmt = $conn->prepare("INSERT INTO contact (firstname, lastname, phone, store, birth_date, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("sssssss", $firstname, $lastname, $phone, $store, $birth_date, $created_at, $updated_at);
+$stmt = $conn->prepare("INSERT INTO contact (firstname, lastname, phone, store, birth_date, email, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssssss", $firstname, $lastname, $phone, $store, $birth_date, $email, $created_at, $updated_at);
 
 // Execute the statement
 if ($stmt->execute()) {
@@ -42,13 +42,30 @@ if ($stmt->execute()) {
         'Customer <br>Name : ' . $firstname . ' ' . $lastname . ' <br>Email : ' . $email . ' <br>Phone : ' . $phone . ' <br>Store : ' . $store . '',
         'This is a test email sent from PHP using PHPMailer.'
     );
+
+    // ส่งอีเมลหาลูกค้าที่มากรอก
+    // $tyMail = $emailSender->sendEmail(
+    //     'support@atelierdeprestige.com', 
+    //     'Atelierd Support', 
+    //     $email, 
+    //     'Owner', 
+    //     'Thank you for your submission.', 
+    //     'Thank you for registeering with
+    //     <br>Name : ' . $firstname . ' ' . $lastname . ' <br>Email : ' . $email . ' <br>Phone : ' . $phone . ' <br>Store : ' . $store . '
+    //     <br>{image}',
+    //     'This is a test email sent from PHP using PHPMailer.',
+    //     './imgs/maison-margiela-banner-02.jpg',
+    //     'thankyouimage'
+    // );
     
     // Redirect to atelierdeprestige.com with a success message
     header("Location: http://atelierdeprestige.com?status=success");
+    // header("Location: http://localhost/atelierdeprestige.com?status=success");
     exit();
 } else {
     // Redirect to atelierdeprestige.com with an error message
     header("Location: http://atelierdeprestige.com?status=error&message=" . urlencode($stmt->error));
+    // header("Location: http://localhost/atelierdeprestige.com?status=error&message=" . urlencode($stmt->error));
     exit();
 }
 

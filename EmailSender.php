@@ -20,7 +20,7 @@ class EmailSender {
         $this->mail->Port = $port;
     }
 
-    public function sendEmail($from, $fromName, $to, $toName, $subject, $body, $altBody = '') {
+    public function sendEmail($from, $fromName, $to, $toName, $subject, $body, $altBody = '', $imagePath = '', $imageCID = '') {
         try {
             // ตั้งค่าผู้ส่งและผู้รับ
             $this->mail->setFrom($from, $fromName);
@@ -32,11 +32,22 @@ class EmailSender {
             $this->mail->Body    = $body;
             $this->mail->AltBody = $altBody;
 
+            // Embed image if provided
+            if ($imagePath && $imageCID) {
+                $this->mail->addEmbeddedImage($imagePath, $imageCID);
+                // Use the embedded image in the email body
+                $this->mail->Body = str_replace('{image}', '<img src="cid:' . $imageCID . '" />', $body);
+            }
+
             $this->mail->send();
             return 'Email has been sent';
         } catch (Exception $e) {
             return "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
         }
     }
+
+    
+
+    
 }
 ?>
